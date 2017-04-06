@@ -1,0 +1,68 @@
+{
+  "images" : [
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "ember-2015-3.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "ember-2015-8.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "ember-2015-6.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "ember-2015-7.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "128x128",
+      "idiom" : "mac",
+      "filename" : "ember-2015-4.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "128x128",
+      "idiom" : "mac",
+      "filename" : "ember-2015-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "ember-2015-2.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "ember-2018.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "ember-2017.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "ember-2016.png",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
