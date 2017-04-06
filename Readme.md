@@ -6,7 +6,7 @@
 
 **SguDrcomGUI** 是以[**SguDrcomClient**](https://github.com/laijingwu/sgu_drcom_client)为核心(本页下方有介绍)，[Steven](https://github.com/Zhou-Haowei) 为韶关学院编写的**第三方 DrCom GUI客户端(目前仅适配MacOS)**，后续会对更多的平台进行适配。
 
-SGUDrcomGUI 开发的初衷是为了提供另一种途径，使大家能更加自由地使用校园网，解决了在MacOS等平台下官方拨号器无法正常使用的现象。
+SGUDrcomGUI 开发的初衷是为了提供另一种途径，使大家能更加自由地使用校园网，解决了在MacOS平台下官方拨号器无法正常使用的现象。
 
 
 
@@ -14,7 +14,7 @@ SGUDrcomGUI 开发的初衷是为了提供另一种途径，使大家能更加�
 
 **SguDrcomGUI** 的诞生离不开“巨人的肩膀”，特别是适配 DrCom 5.2.1 P版的，由 **Shindo** 编写的 **[EasyDrcomGUI](https://github.com/coverxit/EasyDrcomGUI)**。
 
-本客户端在**Shindo** 编写的 **[EasyDrcomGUI](https://github.com/coverxit/EasyDrcomGUI)**的基础上进行了大规模重构。
+本客户端在**Shindo** 编写的 **[EasyDrcomGUI](https://github.com/coverxit/EasyDrcomGUI)**的基础上进行了大规模重构,替换了原有的核心，适配韶关学院拨号协议。
 
 
 
@@ -23,11 +23,14 @@ SGUDrcomGUI 开发的初衷是为了提供另一种途径，使大家能更加�
 ***MacOS：***
 
 - 本客户端解决了在MacOS平台下官方拨号器无法正常使用的现象，能较快的进行内网拨号，外网拨号请使用系统原生PPPOE拨号。
+
 - 受到系统和拨号协议限制，请在使用之前阅读使用须知，并在命令行中执行相应命令后再进行使用。
+
 - Mac OS 版 SGUEasyDrcomGUI-MacOS使用 XCode 8.2.1 开发，语言为 C++（包括C++ 11的部分特性）和 Objective-C。
-- 经过短暂的测试，借助于[**SguDrcomClient**](https://github.com/laijingwu/sgu_drcom_client)核心，解决了拨号协议的心跳问题，能保持在线，但由于测试时间较短，部分系统兼容性和软件健壮性不一定符合预期，希望在使用之后有问题的可以进行反映。
 
+- 经过短暂的测试，借助于[**SguDrcomClient**](https://github.com/laijingwu/sgu_drcom_client)核心，解决了拨号协议的心跳问题，能保持在线，最长达到5小时，但由于测试时间较短，部分系统兼容性和软件健壮性不一定符合预期，希望在使用之后有问题的可以进行反映，有兴趣的同学也可以前来交流。
 
+  ​
 
 
 ## Current Version
@@ -68,8 +71,7 @@ Copyright (C) 2017 laijingwu & Steven
  GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007	             				
  					<http://fsf.org/>
  
- Everyone is permitted to copy and distribute verbatim copies of             this license document.
- Changing it is not allowed.
+ Everyone is permitted to copy and distribute verbatim copies of             this license document,changing it is not allowed.
 ```
 
 
