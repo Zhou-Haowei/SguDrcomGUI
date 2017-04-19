@@ -44,7 +44,7 @@ SGUDrcomGUI 开发的初衷是为了提供另一种途径，使大家能更加�
 ## Update Log
 
 - v1.0 第一个版本。
-- v1.0.1 更新，删除掉没用的代码，优化了代码逻辑，解决了没有权限打开网卡时应用会闪退的问题。
+- v1.0.1 更新，删除掉没用的代码，优化了代码逻辑，解决了没有权限打开网卡时应用会闪退的问题。(暂时未进行长时间稳定性测试)
 
 
 
@@ -79,7 +79,7 @@ Copyright (C) 2017 laijingwu & Steven
  GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007	             				
  					<http://fsf.org/>
  
- Everyone is permitted to copy and distribute verbatim copies of             this license document,changing it is not allowed.
+ Everyone is permitted to copy and distribute verbatim copies of              this license document,changing it is not allowed.
 ```
 
 
