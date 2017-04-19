@@ -26,7 +26,7 @@ SGUDrcomGUI 开发的初衷是为了提供另一种途径，使大家能更加�
 
 - 受到系统和拨号协议限制，请在使用之前阅读使用须知，并在命令行中执行相应命令后再进行使用。
 
-- Mac OS 版 SGUEasyDrcomGUI-MacOS使用 XCode 8.2.1 开发，语言为 C++（包括C++ 11的部分特性）和 Objective-C。
+- Mac OS 版 SGUDrcomGUI-MacOS使用 XCode 8.2.1 开发，语言为 C++（包括C++ 11的部分特性）和 Objective-C。
 
 - 经过短暂的测试，借助于[**SguDrcomClient**](https://github.com/laijingwu/sgu_drcom_client)核心，解决了拨号协议的心跳问题，能保持在线，最长达到5小时，但由于测试时间较短，部分系统兼容性和软件健壮性不一定符合预期，希望在使用之后有问题的可以进行反映，有兴趣的同学也可以前来交流。
 
