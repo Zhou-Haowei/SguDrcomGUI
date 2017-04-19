@@ -16,9 +16,11 @@
 
 #import "DrcomDealer.h"
 
+
 @implementation DrcomDealer
 - (id) initWithNICName:(NSString *)_device userName:(NSString *)_userName passWord:(NSString *)_passWord IPAddress:(NSString *)_ip MacAddress:(NSString *)_mac
 {
+
     if (self = [super init])
     {
         device = _device;

@@ -31,6 +31,7 @@ class udp_dealer;
 
 - (BOOL) isEAPObjectInit;
 - (BOOL) isUDPObjectInit;
++ (BOOL) testNICAccessibility:(NSString *)deviceName;
 
 // EAP
 - (void) logOff;

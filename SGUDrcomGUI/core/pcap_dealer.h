@@ -45,6 +45,7 @@ public:
 	bool send(vector<uint8_t> data, vector<uint8_t> *success, string *error);
 	void send_without_response(vector<uint8_t> data, string *error);
 	bool recv(vector<uint8_t> *success, string *error);
+    static bool testNICAccessibility(string device);
 	virtual ~pcap_dealer();
 
 private:

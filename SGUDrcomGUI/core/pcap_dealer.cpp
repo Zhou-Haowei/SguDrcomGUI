@@ -38,7 +38,7 @@ bool pcap_dealer::init(string device, char filter[]) {
 
     try
     {
-        handle = pcap_open_live(device.c_str(), SNAP_LEN, 1, 1000, errbuf);
+        handle = pcap_open_live(device.c_str(), SNAP_LEN, 1, 2000, errbuf);
 
         if (handle == NULL) {
             cout << "Please ensure you have the access to the network devices." << endl;
@@ -145,6 +145,17 @@ bool pcap_dealer::recv(vector<uint8_t> *success, string *error) {
         PCAP_LOG_INFO(*error);
         return false;
     }
+    return true;
+}
+
+bool pcap_dealer::testNICAccessibility(string device){
+    const int SNAP_LEN = 1518;
+    char errbuf[PCAP_ERRBUF_SIZE] = { 0 };
+    pcap_t *tester;
+    tester = pcap_open_live(device.c_str(), SNAP_LEN, 1, 2000, errbuf);
+    if (tester == NULL)
+        return false;
+    pcap_close(tester);
     return true;
 }
 

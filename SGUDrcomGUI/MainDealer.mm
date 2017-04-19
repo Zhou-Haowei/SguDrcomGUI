@@ -39,6 +39,7 @@
 #include "core/sgudrcom_exception.h"
 #include "core/log.h"
 #include "core/utils.h"
+#include "core/pcap_dealer.h"
 
 
 @implementation MainDealer
@@ -148,4 +149,10 @@ std::vector<uint8_t> gateway_udp_mac = { 0x58, 0x6a, 0xb1, 0x56, 0x79, 0x00 };
 {
     udp->clear_udp_param();
 }
+
++ (BOOL) testNICAccessibility:(NSString *)deviceName{
+    NSLog(@"%s","Jump into this function");
+    return pcap_dealer::testNICAccessibility([deviceName UTF8String]);
+}
+
 @end

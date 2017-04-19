@@ -51,11 +51,11 @@ public:
 	virtual ~eap_dealer();
 
 private:
-	pcap_dealer pcap;
 	int resp_eap_id;
 	int resp_md5_eap_id; // Recved from Request, MD5-Challenge EAP
 	uint8_t response[128]; // 数据包
 	int begintime;
+    pcap_dealer pcap;
 
 	vector<uint8_t> gateway_mac;
 	vector<uint8_t> local_mac; // Const

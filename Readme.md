@@ -35,8 +35,16 @@ SGUDrcomGUI 开发的初衷是为了提供另一种途径，使大家能更加�
 
 ## Current Version
 
-- MacOS: v1.0
+- Former: MacOS: v1.0
+- Latest: MacOS: v1.0.1 (Updated at 04/19/2017)
 
+
+
+
+## Update Log
+
+- v1.0 第一个版本。
+- v1.0.1 更新，删除掉没用的代码，优化了代码逻辑，解决了没有权限打开网卡时应用会闪退的问题。
 
 
 

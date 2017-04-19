@@ -223,8 +223,13 @@ NSThread *eapKeepAlive = nil;
         [self.lblMacAddr setStringValue:storedMAC];
         SYS_LOG_DBG("IP = " << [storedIP UTF8String] << ", MAC = " << [storedMAC UTF8String] << std::endl);
         SYS_LOG_INFO("Preparation done." << std::endl);
+        if( ![MainDealer testNICAccessibility:storedNIC] ){
+            NSAlert *alert = [NSAlert alertWithMessageText:@"发生错误" defaultButton:@"好" alternateButton:nil otherButton:nil informativeTextWithFormat:@"没有权限打开对应的网卡，请按照步骤授予权限！"];
+            [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+            return;
+        }
         connectJob = [[NSThread alloc] initWithTarget:self selector:@selector(connectionJobForStudentDistrict) object:nil];
-
+        
         [self.lblStatus setStringValue: @"准备连接中……"];
         [self.lblOnlineTime setStringValue: @"00:00:00"];
         

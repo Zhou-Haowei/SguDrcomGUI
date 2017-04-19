@@ -40,27 +40,6 @@ const int ConnectionModeStudentDistrict = 0;
 
 typedef NSInteger ConnectionMode;
 
-enum
-{
-    AuthErrorCodeCheckMAC = 0x01,
-    AuthErrorCodeServerBusy = 0x02,
-    AuthErrorCodeWrongPass = 0x03,
-    AuthErrorCodeNotEnough = 0x04,
-    AuthErrorCodeFreezeUp = 0x05,
-    AuthErrorCodeNotOnThisIP = 0x07,
-    AuthErrorCodeNotOnThisMac = 0x0B,
-    AuthErrorCodeTooMuchIP = 0x14,
-    AuthErrorCodeUpdateClient = 0x15,
-    AuthErrorCodeNotOnThisIPMAC = 0x16,
-    AuthErrorCodeMustUseDHCP = 0x17,
-    AuthErrorCodeReserved1 = 0x18,
-    AuthErrorCodeReserved2 = 0x19,
-    AuthErrorCodeReserved3 = 0x1A,
-    AuthErrorCodeReserved4 = 0x1B,
-    AuthErrorCodeReserved5 = 0x1c,
-};
-typedef NSUInteger AuthErrorCode;
-
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 {
     NSDictionary *udpErrorDict;
