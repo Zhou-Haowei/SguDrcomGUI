@@ -1,5 +1,4 @@
 /**
- * Reconstructed:
  *
  * Copyright (C) 2017 Steven
  *
@@ -14,21 +13,6 @@
  * Everyone is permitted to copy and distribute verbatim copies of this license document.
  * Changing it is not allowed.
  *
- *
- *
- * Copyright (C) 2015 Shindo
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 
@@ -69,7 +53,8 @@ NSThread *eapKeepAlive = nil;
     statusIcon = [[NSStatusBar systemStatusBar]statusItemWithLength:NSVariableStatusItemLength];
     [statusIcon setImage:[NSImage imageNamed:@"offline"]];
     [statusIcon setHighlightMode:YES];
-    statusIcon.target = self;
+    statusIcon.button.target = self;
+    statusIcon.button.action = @selector(openWindow:);
     
     
     // load nics
@@ -174,6 +159,11 @@ NSThread *eapKeepAlive = nil;
 {
     [[NSRunningApplication currentApplication] hide];
     return NO;
+}
+
+- (void)openWindow:(id)sender {
+    NSWindow *window = [self window]; // Get the window to open
+    [window makeKeyAndOrderFront:nil];
 }
 
 - (IBAction) connectClicked:(id)sender
