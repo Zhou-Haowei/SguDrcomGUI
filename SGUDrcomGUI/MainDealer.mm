@@ -151,7 +151,7 @@ std::vector<uint8_t> gateway_udp_mac = { 0x58, 0x6a, 0xb1, 0x56, 0x79, 0x00 };
 }
 
 + (BOOL) testNICAccessibility:(NSString *)deviceName{
-    NSLog(@"%s","Jump into this function");
+    NSLog(@"%s","Don't have the access of this NIC");
     return pcap_dealer::testNICAccessibility([deviceName UTF8String]);
 }
 

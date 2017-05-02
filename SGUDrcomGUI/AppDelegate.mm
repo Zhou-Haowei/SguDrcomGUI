@@ -270,13 +270,13 @@ NSThread *eapKeepAlive = nil;
     }
 }
 
-- (void) notificateWithString:(NSString *)string notificateType:(NSString *)type
-{
-    SYS_LOG_INFO("Gateway notificate - " << [type UTF8String] << ": " << [string UTF8String] << std::endl);
-    NSString *title = [NSString stringWithFormat:@"网关通知 - %@", type];
-    NSAlert *alert = [NSAlert alertWithMessageText:title defaultButton:@"好" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@", string];
-    [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
-}
+//- (void) notificateWithString:(NSString *)string notificateType:(NSString *)type
+//{
+//    SYS_LOG_INFO("Gateway notificate - " << [type UTF8String] << ": " << [string UTF8String] << std::endl);
+//    NSString *title = [NSString stringWithFormat:@"网关通知 - %@", type];
+//    NSAlert *alert = [NSAlert alertWithMessageText:title defaultButton:@"好" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@", string];
+//    [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+//}
 
 -(bool) loginProcess{
     [dealer logOff];

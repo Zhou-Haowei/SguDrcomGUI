@@ -78,6 +78,6 @@ typedef NSInteger ConnectionMode;
 - (void) udpAliveWithDealer: (MainDealer*)dealer;
 
 - (void) resetOnlineTime;
-- (void) notificateWithString:(NSString*) string notificateType:(NSString*) type;
+//- (void) notificateWithString:(NSString*) string notificateType:(NSString*) type;
 
 @end
