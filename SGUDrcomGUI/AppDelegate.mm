@@ -270,13 +270,6 @@ NSThread *eapKeepAlive = nil;
     }
 }
 
-//- (void) notificateWithString:(NSString *)string notificateType:(NSString *)type
-//{
-//    SYS_LOG_INFO("Gateway notificate - " << [type UTF8String] << ": " << [string UTF8String] << std::endl);
-//    NSString *title = [NSString stringWithFormat:@"网关通知 - %@", type];
-//    NSAlert *alert = [NSAlert alertWithMessageText:title defaultButton:@"好" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@", string];
-//    [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
-//}
 
 -(bool) loginProcess{
     [dealer logOff];
@@ -427,6 +420,8 @@ firstFail:
     [self.btnConnect setTitle:@"连接"];
     //[self.connectIndicator setHidden:YES];
     [statusIcon setImage:[NSImage imageNamed:@"offline"]];
+    NSAlert *failAlert = [NSAlert alertWithMessageText:@"消息！" defaultButton:@"好" alternateButton:nil otherButton:nil informativeTextWithFormat:@"与验证服务器连接断开"];
+    [failAlert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
     connectJob = nil;
 }
 
