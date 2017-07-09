@@ -129,8 +129,6 @@ bool eap_dealer::start() {
 		
 		EAP_LOG_INFO("Gateway returns: Request, Identity");
 		resp_eap_id = eap_header->eap_id;
-		// get and save gateway mac address
-		// gateway_mac.clear();
 		memcpy(&gateway_mac[0], &(eth_header->ether_shost), 6);
 		return true;
 	}

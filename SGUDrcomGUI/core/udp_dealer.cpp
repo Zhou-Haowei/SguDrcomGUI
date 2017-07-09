@@ -359,9 +359,6 @@ bool udp_dealer::sendalive_u40_3_pkt() {
     // udp_40_chksum, generate by function named generate_40_chksum.
     udp_data_set.insert(udp_data_set.end(), 4, 0x00); 
 
-    // udp_data_set.insert(udp_data_set.end(), 4, 0x00);
-    // vector<uint8_t> vec_local_ip = str_ip_to_vec(local_ip);
-    // memcpy(&udp_data_set[28], &vec_local_ip[0], 4); // local ip
 
     udp_data_set.insert(udp_data_set.end(), 12, 0x00); // fixed 8
     /////////////////////////////// Data set end /////////////////////////////////
