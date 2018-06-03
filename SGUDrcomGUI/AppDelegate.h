@@ -19,15 +19,10 @@
 #import "PcapBridge.h"
 #import "MainDealer.h"
 
-
-const int ConnectionModeStudentDistrict = 0;
-
 typedef NSInteger ConnectionMode;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 {
-    NSDictionary *udpErrorDict;
-    
     NSString *logPath;
     
     NSThread* connectTimer;
@@ -37,12 +32,6 @@ typedef NSInteger ConnectionMode;
     NSString *storedNIC, *storedUserName, *storedPassWord, *storedIP, *storedMAC;
     NSThread *connectJob;
     
-    BOOL keepAliveFail;
-    NSCondition *keepAliveCondition;
-    NSCondition *keepAliveFirstTry;
-    
-    ConnectionMode connectMode;
-    
     NSStatusItem *statusIcon;
 }
 
@@ -50,12 +39,13 @@ typedef NSInteger ConnectionMode;
 
 @property (assign) IBOutlet NSWindow *window;
 
+@property (nonatomic, retain) IBOutlet NSButton *reconnectMode;
 @property (nonatomic, retain) IBOutlet NSPopUpButton *nicList;
 @property (nonatomic, retain) IBOutlet NSTextField *userName;
 @property (nonatomic, retain) IBOutlet NSTextField *passWord;
 @property (nonatomic, retain) IBOutlet NSButton *btnConnect;
 
-@property (nonatomic, retain) IBOutlet NSBox *boxStatus;
+
 @property (nonatomic, retain) IBOutlet NSTextField *lblStatus;
 @property (nonatomic, retain) IBOutlet NSTextField *lblOnlineTime;
 @property (nonatomic, retain) IBOutlet NSTextField *lblIPAddr;

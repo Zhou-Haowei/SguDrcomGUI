@@ -42,13 +42,12 @@ NSThread *eapKeepAlive = nil;
     [self.window setDelegate:self];
     [self.btnConnect setBezelStyle:NSRoundedBezelStyle];
     [self.window setDefaultButtonCell:[self.btnConnect cell]];
+    [self.reconnectMode setState:NSControlStateValueOn];
     
     
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     [self.window setTitle:[NSString stringWithFormat:@"SGUDrcomGUI For OSX, v%@", version]];
     SYS_LOG_INFO("SGUDrcomGUI For OSX, v" << [version UTF8String] << std::endl);
-    
-    connectMode = ConnectionModeStudentDistrict;
     
     statusIcon = [[NSStatusBar systemStatusBar]statusItemWithLength:NSVariableStatusItemLength];
     [statusIcon setImage:[NSImage imageNamed:@"offline"]];
@@ -111,7 +110,6 @@ NSThread *eapKeepAlive = nil;
     
     // load settings
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    connectMode = ConnectionModeStudentDistrict;
     storedNIC = [userDefaults objectForKey:@"stuDist.storedNIC"];
     storedUserName = [userDefaults objectForKey:@"stuDist.storedUserName"];
     storedPassWord = [userDefaults objectForKey:@"stuDist.storedPassWord"];
@@ -141,8 +139,6 @@ NSThread *eapKeepAlive = nil;
     }
     else
     {
-        SYS_LOG_INFO("SGUDrcomGUI quit." << std::endl);
-        
         return NSTerminateNow;
     }
 }
@@ -181,8 +177,6 @@ NSThread *eapKeepAlive = nil;
             [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
             return;
         }
-        
-        SYS_LOG_INFO("Prepare to authenticate..." << std::endl);
         
         // save settings
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -227,6 +221,7 @@ NSThread *eapKeepAlive = nil;
         [self.userName setEnabled:NO];
         [self.passWord setEnabled:NO];
         [self.btnConnect setEnabled:NO];
+        [self.reconnectMode setEnabled:NO];
         
         [connectJob start];
     }
@@ -377,7 +372,8 @@ NSThread *eapKeepAlive = nil;
     catch (std::exception&) {
         DRCOM_STATE = OFFLINE;
         [self.lblStatus setStringValue:@"802.1X认证失败！"];
-        goto firstFail;
+        if(self.reconnectMode.state == NSControlStateValueOn) goto aliveFail;
+        else goto firstFail;
     }
     // prevent app nap
     if ([[NSProcessInfo processInfo] respondsToSelector:@selector(beginActivityWithOptions:reason:)])
@@ -404,25 +400,40 @@ NSThread *eapKeepAlive = nil;
     [self.lblStatus setStringValue:@"已断开"];
     
     
-firstFail:
-    if (udpKeepAlive != nil && [udpKeepAlive isExecuting])
-        [udpKeepAlive cancel];
-    if (eapKeepAlive != nil && [eapKeepAlive isExecuting])
-        [eapKeepAlive cancel];
-    [self resetOnlineTime];
-    [self.nicList setEnabled:YES];
-    [self.userName setEnabled:YES];
-    [self.passWord setEnabled:YES];
-    [self.btnConnect setEnabled:YES];
+    firstFail: {
+        if (udpKeepAlive != nil && [udpKeepAlive isExecuting])
+            [udpKeepAlive cancel];
+        if (eapKeepAlive != nil && [eapKeepAlive isExecuting])
+            [eapKeepAlive cancel];
+        [self resetOnlineTime];
+        [self.nicList setEnabled:YES];
+        [self.userName setEnabled:YES];
+        [self.passWord setEnabled:YES];
+        [self.btnConnect setEnabled:YES];
+        
+        [self.lblIPAddr setStringValue:@"-"];
+        [self.lblMacAddr setStringValue:@"-"];
+        [self.btnConnect setTitle:@"连接"];
+        [self.reconnectMode setEnabled:YES];
+        [statusIcon setImage:[NSImage imageNamed:@"offline"]];
+        NSAlert *failAlert = [NSAlert alertWithMessageText:@"消息！" defaultButton:@"好" alternateButton:nil otherButton:nil informativeTextWithFormat:@"与验证服务器连接断开"];
+        [failAlert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+        connectJob = nil;
+    }
     
-    [self.lblIPAddr setStringValue:@"-"];
-    [self.lblMacAddr setStringValue:@"-"];
-    [self.btnConnect setTitle:@"连接"];
-    //[self.connectIndicator setHidden:YES];
-    [statusIcon setImage:[NSImage imageNamed:@"offline"]];
-    NSAlert *failAlert = [NSAlert alertWithMessageText:@"消息！" defaultButton:@"好" alternateButton:nil otherButton:nil informativeTextWithFormat:@"与验证服务器连接断开"];
-    [failAlert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
-    connectJob = nil;
+    aliveFail: {
+        if (udpKeepAlive != nil && [udpKeepAlive isExecuting])
+            [udpKeepAlive cancel];
+        if (eapKeepAlive != nil && [eapKeepAlive isExecuting])
+            [eapKeepAlive cancel];
+        dealer =nil;
+        [self resetOnlineTime];
+        [self.btnConnect setEnabled:NO];
+        [self.lblStatus setStringValue:@"正在重连"];
+        sleep(1);
+        [self connectionJobForStudentDistrict];
+        
+    }
 }
 
 
